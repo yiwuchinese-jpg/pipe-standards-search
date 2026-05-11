@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>管材标准搜索系统</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">本地离线索引</p>
+          <h1>管材标准搜索系统</h1>
+        </div>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section class="search-panel" aria-label="搜索">
+        <div class="search-row">
+          <label class="search-box">
+            <span>搜索产品、标准编号或标准名称</span>
+            <input id="searchInput" type="search" placeholder="例如：PPR、ISO 4427、ASTM F876、冷热水、燃气" autofocus>
+          </label>
+          <button id="clearButton" type="button" title="清空搜索">清空</button>
+        </div>
+
+        <div class="filters">
+          <label>
+            产品类别
+            <select id="productFilter">
+              <option value="">全部产品</option>
+            </select>
+          </label>
+          <label>
+            文件类型
+            <select id="typeFilter">
+              <option value="">全部类型</option>
+            </select>
+          </label>
+          <label>
+            排序
+            <select id="sortMode">
+              <option value="score">相关度</option>
+              <option value="product">产品类别</option>
+              <option value="title">标准名称</option>
+              <option value="modified">更新时间</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="content">
+        <aside class="sidebar">
+          <h2>产品类别</h2>
+          <div id="productList" class="chip-list"></div>
+          <h2>常见标准</h2>
+          <div id="standardList" class="standard-list"></div>
+        </aside>
+
+        <section class="results-area">
+          <div class="result-header">
+            <div>
+              <h2 id="resultTitle">全部文件</h2>
+              <p id="resultMeta"></p>
+            </div>
+          </div>
+          <div id="results" class="results"></div>
+          <div id="emptyState" class="empty-state" hidden>
+            没有找到匹配文件。可以换用标准编号的一部分、英文缩写或中文产品名称再试。
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./data/search-index.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
